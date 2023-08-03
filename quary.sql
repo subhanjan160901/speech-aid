@@ -1,0 +1,1 @@
+CREATE TABLE login_details(username text,email text, password text)
