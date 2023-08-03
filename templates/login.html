@@ -1,0 +1,34 @@
+ 
+{%extends "index.html"%}
+{% block body %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f8f9fa;">
+    <div class="col-md-6">
+      <div class="card" style="max-width: 450px; margin: 0 auto;">
+        <div class="card-header text-primary text-center">
+          <h2 class="font-weight-bold" style="font-family: Arial, sans-serif; font-size: 24px;">Login</h2> <!-- Updated font style and size -->
+        </div>
+        <div class="card-body">
+          <form action="/login" method="post">
+            <div class="form-group">
+              {% if msg %}
+              <p class="text-danger text-center"><strong>{{ msg }}</strong></p>
+              {% endif %}
+              <label for="email" style="font-family: Arial, sans-serif; font-size: 16px;">Email address:</label> <!-- Updated font style and size -->
+              <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="password" style="font-family: Arial, sans-serif; font-size: 16px;">Password:</label> <!-- Updated font style and size -->
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="remember-me">
+              <label class="form-check-label" for="remember-me" style="font-family: Arial, sans-serif; font-size: 14px;">Remember me</label> <!-- Updated font style and size -->
+            </div>
+            <button type="submit" class="btn btn-primary" style="font-family: Arial, sans-serif;">Sign in</button> <!-- Updated font style -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock body%}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<style>
+    .input-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url("static/home.webp");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .input-form .speech-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #007bff;
+        font-size: 50px;
+        font-weight: bold;
+        animation-name: pulse;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+    }
+
+    .input-form .buttons-container {
+        position: absolute;
+        bottom: -40px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .input-form .buttons-container button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="input-form">
+    {% if spocken_word %}
+    <h3 style="text-align:center;color:white;">You spoke: {{ spocken_word }}</h3>
+    <h3 style="text-align:center;color:white;">Your Score: {{ score }} %</h3>
+    {% else %}
+    <h3 style="text-align:center;color:white;">You have to speak: {{ msg }}</h3>
+    {% endif %}
+    <h4 style="text-align:center;color:white;">Click the mic than speek</h4>
+    <div class="speech-icon" onclick="window.location.href = '/speek'">
+        <i class="bi bi-mic"></i>
+    </div>
+    <div class="buttons-container my-5">
+        <button type="button" class="btn btn-info" onclick="window.location.href = '/main'">Try Again</button>
+        <button type="button" class="btn btn-success" onclick="window.location.href = '/pro'">Listen Again</button>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+{% block body %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f8f9fa;">
+    <div class="col-md-6">
+      <div class="card" style="max-width: 450px; margin: 0 auto;">
+        <div class="card-header text-primary text-center">
+        <p>Choose form these Abbreviations : </p>
+        {%if words%}
+        <p>{{words}}</p>
+        {%elif speek%}
+        <p> System pronounced {{speek}} </p>
+        {%endif%}
+        </div>
+        <div class="card-body">
+          <form action="/test_pronounce" method="post">
+            <div class="form-group">
+              <label for="wrtie" style="font-family: Arial, sans-serif; font-size: 16px;">write some words here to :</label>
+               <!-- Updated font style and size -->
+               {%if speek%}
+               <input type="text" name="words" class="form-control" id="words" value={{speek}} placeholder="ga gu ka etc.." required>
+               {%else%}
+              <input type="text" name="words" class="form-control" id="words" placeholder="ga gu ka etc.." required>
+              {%endif%}
+            </div>
+            <button type="submit" class="btn btn-primary" style="font-family: Arial, sans-serif;" >Test Pronunciation</button> <!-- Updated font style -->
+          </form>
+          <button type="button" class="btn btn-outline-primary my-2" onclick="window.location.href = '/test_generate'">Generate Randomly</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock body%}

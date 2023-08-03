@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<style>
+    .input-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url("static/home.webp");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .input-form button {
+        margin-bottom: 20px;
+    }
+
+    .input-form .speech-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #007bff;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .input-form .text-input {
+        display: none;
+    }
+
+    .input-form .text-input input {
+        width: 300px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="input-form">
+    <button id="speechButton" class="btn btn-primary" onclick="window.location.href = '/main'">click here if want to Learn</button>
+    <button id="textInputButton" class="btn btn-primary" onclick="window.location.href = '/test'">click here if you want test</button>
+
+    <div id="speechInput" class="speech-icon">
+        <i class="bi bi-mic"></i>
+    </div>
+
+    <div id="textInput" class="text-input">
+        <input type="text" class="form-control" placeholder="Type your input">
+        <button id="analyzeButton" class="btn btn-primary my-5">Analyze</button>
+    </div>
+</div>
+
+<script>
+    const speechButton = document.getElementById("speechButton");
+    const textInputButton = document.getElementById("textInputButton");
+    const speechInput = document.getElementById("speechInput");
+    const textInput = document.getElementById("textInput");
+
+    speechButton.addEventListener("click", () => {
+        speechInput.style.display = "flex";
+        textInput.style.display = "none";
+    });
+
+    textInputButton.addEventListener("click", () => {
+        speechInput.style.display = "none";
+        textInput.style.display = "block";
+    });
+</script>
+{% endblock body %}
